@@ -1,0 +1,30 @@
+.# Used as base dependancy file to generate basic agent script
+.template 0
+
+if !defined(projects)
+    abort "Error: can't find <projects> root tag, {file: $(gsl.filename)}."
+endif
+
+global.gslScriptToLaunch = ""
+
+if !defined(switches.arg1) & string.length(switches.arg1 > 0)
+    abort "Error: can't find GSL script as second argument option. E.g: gsl -a --script:project_common xml_model.xml agent_xxx.gsl"
+else 
+    global.gslScriptToLaunch = switches.arg1
+endif
+
+for projects. as project
+    global.project_name = project.name
+    global.project_contributor = project.author 
+    global.project_copyright = project.copyright
+    global.project_scriptFolder = "."
+
+    for project. as agents where name(agents) = "agents"
+        for agents. as definition
+            include global.gslScriptToLaunch
+        endfor
+    endfor
+endfor
+.endtemplate  
+
+
