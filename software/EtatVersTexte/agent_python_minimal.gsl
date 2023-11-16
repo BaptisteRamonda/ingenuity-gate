@@ -1,0 +1,150 @@
+.# > name="1- Minimal agent"
+.# > keyword="Python"
+.# > description="A minimal agent in Python."
+.# > agentMode="ONE"
+.# > onlyAgentDefinitionSupport="true"
+.template 0
+function typeToIGSType (type)
+   if (type = "STRING")
+       return "igs.STRING_T"
+   elsif (type = "INTEGER")
+       return "igs.INTEGER_T"
+   elsif (type = "DOUBLE")
+       return "igs.DOUBLE_T"
+   elsif (type = "BOOL")
+       return "igs.BOOL_T"
+   elsif (type = "IMPULSION")
+       return "igs.IMPULSION_T"
+   elsif (type = "DATA")
+       return "igs.DATA_T"
+   endif
+endfunction typeToIGSType
+
+.endtemplate
+.template 1
+.ignorecase = 0
+.
+.####################################################################################
+.echo "Generating main.py ..."
+.output "main.py"
+#!/usr/bin/env -P /usr/bin:/usr/local/bin python3 -B
+# coding: utf-8
+
+#
+#  main.py
+#  $(definition.name) $(definition.version ?? "version " + definition.version)
+#  Created $(defined(definition.author) ?? "by " + definition.author ? "") on $(date.picture())
+#
+
+import sys
+import ingescape as igs
+
+.if (count(definition.input))
+#inputs
+def input_callback(iop_type, name, value_type, value, my_data):
+    pass
+    # add code here if needed
+
+.endif
+.
+.if (count(definition.parameter))
+def parameter_callback(iop_type, name, value_type, value, my_data):
+    pass
+    # add code here if needed
+
+.endif
+.
+.if (count(definition.service) > 0)
+def service_callback(sender_agent_name, sender_agent_uuid, service_name, arguments, token, my_data):
+    pass
+    # add code here if needed
+
+.endif
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print("usage: python3 main.py agent_name network_device port")
+        devices = igs.net_devices_list()
+        print("Please restart with one of these devices as network_device argument:")
+        for device in devices:
+            print(f" {device}")
+        exit(0)
+
+    igs.agent_set_name(sys.argv[1])
+.if (defined (definition.version) & string.length(definition.version))
+    igs.definition_set_version("$(definition.version)")
+.endif
+.if (defined (definition->description) & string.length(definition->description))
+    igs.definition_set_description("""$(definition->description)""")
+.endif
+    igs.log_set_console(True)
+    igs.log_set_file(True, None)
+    igs.set_command_line(sys.executable + " " + " ".join(sys.argv))
+
+.for definition.parameter
+    igs.parameter_create("$(parameter.name)", $(typeToIGSType(parameter.type)), None)
+.endfor
+.if (count(definition.parameter)>0)
+
+.endif
+.for definition.input
+    igs.input_create("$(input.name)", $(typeToIGSType(input.type)), None)
+.endfor
+.if (count(definition.input)>0)
+
+.endif
+.for definition.output
+    igs.output_create("$(output.name)", $(typeToIGSType(output.type)), None)
+.endfor
+.if (count(definition.output)>0)
+
+.endif
+.for definition.input
+    igs.observe_input("$(input.name)", input_callback, None)
+.endfor
+.if (count(definition.input)>0)
+
+.endif
+.for definition.parameter
+    igs.observe_parameter("$(parameter.name)", parameter_callback, None)
+.endfor
+.if (count(definition.parameter)>0)
+
+.endif
+.for service
+    igs.service_init("$(service.name)", service_callback, None)
+.for argument
+    igs.service_arg_add("$(service.name)", "$(argument.name)", $(typeToIGSType(argument.type)))
+.endfor
+.endfor
+.if (count(definition.service)>0)
+
+.endif
+    igs.start_with_device(sys.argv[2], int(sys.argv[3]))
+
+    input()
+
+    igs.stop()
+
+.####################################################################################
+.echo "Generating other static files ..."
+.output "LICENSE"
+Add your license here
+.
+.output "requirements.txt"
+ingescape >= 3.0.4
+.
+.output "README.md"
+## Prerequisites
+* Python3 (https://www.python.org/downloads/)
+
+## Install dependencies
+```bash
+python3 -m pip install ingescape
+```
+
+## Run
+```bash
+python3 main.py agent_name device port
+```
+
+.endtemplate

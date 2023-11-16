@@ -9,25 +9,17 @@
 
 import sys
 import ingescape as igs
-
-wasCalled = False
-
-
-def getWasCalled():
-    return wasCalled
-
-
-def setWasCalled(value):
-    wasCalled = value
+import time
 
 
 # inputs
 def input_callback(iop_type, name, value_type, value, my_data):
-    if not getWasCalled():
-        igs.service_call("Whiteboard", "addShape", ("rectangle", 0., 0., 100., 1500., "black", "black", 3.), "")
-        igs.service_call("Whiteboard", "addShape", ("rectangle", 1040., 0., 100., 1500., "black", "black", 3.), "")
-        print(iop_type, name, value_type, value, my_data)
-        setWasCalled(True)
+    if name == "initialisation":
+        igs.service_call("Whiteboard", "addShape", ("rectangle", 100., 250., 930., 1000., "gray", "gray", 3.), "")
+        igs.service_call("Whiteboard", "addShape", ("rectangle", 10., 100., 100., 1000., "black", "black", 3.), "")
+        igs.service_call("Whiteboard", "addShape", ("rectangle", 1030., 100., 100., 1000., "black", "black", 3.), "")
+    elif name == "distanceParcourue":
+        igs.service_call("Whiteboard", "setDoubleProperty", (0, "width", 930. - value / 110.0 * 930.), "")
 
 
 if __name__ == "__main__":
@@ -39,23 +31,18 @@ if __name__ == "__main__":
             print(f" {device}")
         exit(0)
 
-    wasCalled = False
-
     igs.agent_set_name(sys.argv[1])
     igs.definition_set_version("1.0")
     igs.log_set_console(True)
     igs.log_set_file(True, None)
     igs.set_command_line(sys.executable + " " + " ".join(sys.argv))
 
-    igs.input_create("estOuvert", igs.BOOL_T, None)
-    igs.input_create("estFerme", igs.BOOL_T, None)
-    igs.input_create("estAppele", igs.BOOL_T, None)
     igs.input_create("distanceParcourue", igs.DOUBLE_T, None)
+    igs.input_create("initialisation", igs.IMPULSION_T, None)
 
-    igs.observe_input("estOuvert", input_callback, None)
-    igs.observe_input("estFerme", input_callback, None)
-    igs.observe_input("estAppele", input_callback, None)
     igs.observe_input("distanceParcourue", input_callback, None)
+    igs.observe_input("initialisation", input_callback, None)
+
 
     igs.start_with_device(sys.argv[2], int(sys.argv[3]))
 
