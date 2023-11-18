@@ -4,7 +4,7 @@
 #
 #  main.py
 #  Interface version 1.0
-#  Created by Ingenuity i/o on 2023/11/15
+#  Created by Piriou--Dezy, Roux, Ramonda i/o on 2023/11/15
 #
 
 import sys
@@ -14,6 +14,16 @@ import time
 
 # inputs
 def input_callback(iop_type, name, value_type, value, my_data):
+    """
+    Callback function for handling input changes.
+
+    Parameters:
+    - iop_type: The type of I/O point.
+    - name (str): The name of the I/O point.
+    - value_type: The data type of the value.
+    - value: The current value of the input.
+    - my_data: Additional data (not used in this function).
+    """
     if name == "initialisation":
         igs.service_call("Whiteboard", "addShape", ("rectangle", 100., 250., 930., 1000., "gray", "gray", 3.), "")
         igs.service_call("Whiteboard", "addShape", ("rectangle", 10., 100., 100., 1000., "black", "black", 3.), "")

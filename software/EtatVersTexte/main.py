@@ -4,7 +4,7 @@
 #
 #  main.py
 #  EtatVersTexte version 1.0
-#  Created by Ingenuity i/o on 2023/11/16
+#  Created by Piriou--Dezy, Roux, Ramonda i/o on 2023/11/16
 #
 
 import sys
@@ -13,6 +13,16 @@ import ingescape as igs
 
 # inputs
 def input_callback(iop_type, name, value_type, value, my_data):
+    """
+    Callback function for handling input changes related to the gate's state.
+
+    Parameters:
+    - iop_type: The type of I/O point.
+    - name (str): The name of the I/O point.
+    - value_type: The data type of the value.
+    - value: The current value of the input.
+    - my_data: Additional data (not used in this function).
+    """
     if name == "estOuvert":
         if value:
             igs.output_set_string('titre', "Portail ouvert")

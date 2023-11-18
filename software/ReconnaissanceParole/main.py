@@ -4,7 +4,7 @@
 #
 #  main.py
 #  ReconnaissanceParole version 1.0
-#  Created by Ingenuity i/o on 2023/11/15
+#  Created by Piriou--Dezy, Roux, Ramonda i/o on 2023/11/15
 #
 
 import sys
@@ -17,6 +17,12 @@ from gtts import gTTS
 
 
 def vocal_response(response):
+    """
+    Synthesizes the provided response into speech and plays it.
+
+    Parameters:
+    - response (str): The text to be synthesized and spoken.
+    """
     # Synthesize the response from the input string
     tts = gTTS(text=response, lang="fr")
     tts.save("response.mp3")
@@ -37,6 +43,14 @@ def vocal_response(response):
 
 
 def recognize_speech():
+    """
+    Performs speech recognition and interprets the recognized text.
+
+    Returns:
+    - prompt (str): The recognized speech converted to text.
+    - actionPortail (int): The action to be taken based on the recognized speech
+                          (-1 if no relevant action).
+    """
     # Initialize the recognizer
     recognizer = sr.Recognizer()
     actionPortail: int = -1

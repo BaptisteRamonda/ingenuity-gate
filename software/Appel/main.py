@@ -4,9 +4,10 @@
 #
 #  main.py
 #  Appel version 1.0
-#  Created by Ingenuity i/o on 2023/11/16
+#  Created by Piriou--Dezy, Roux, Ramonda i/o on 2023/11/16
 #
 
+# imports
 import sys
 import ingescape as igs
 import pygame
@@ -15,6 +16,12 @@ from gtts import gTTS
 
 
 def vocal_response(response):
+    """
+    Synthesizes the provided response into speech and plays it.
+
+    Parameters:
+    - response (str): The text to be synthesized and spoken.
+    """
     # Synthesize the response from the input string
     tts = gTTS(text=response, lang="fr")
     tts.save("response.mp3")
@@ -36,6 +43,14 @@ def vocal_response(response):
 
 
 def recognize_speech():
+    """
+    Performs speech recognition and interprets the recognized text.
+
+    Returns:
+    - prompt (str): The recognized speech converted to text.
+    - actionPortail (int): The action to be taken based on the recognized speech
+                          (-1 if no relevant action).
+    """
     try:
         # Initialize the recognizer
         recognizer = sr.Recognizer()
@@ -81,6 +96,16 @@ pulsed = False
 
 
 def input_callback(iop_type, name, value_type, value, my_data):
+    """
+    Callback function for handling input changes.
+
+    Parameters:
+    - iop_type: The type of I/O point.
+    - name (str): The name of the I/O point.
+    - value_type: The data type of the value.
+    - value: The current value of the input.
+    - my_data: Additional data (not used in this function).
+    """
     global pulsed
 
     if value and not pulsed:

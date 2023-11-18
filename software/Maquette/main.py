@@ -4,7 +4,7 @@
 #
 #  main.py
 #  Maquette version 1.0
-#  Created by Ingenuity i/o on 2023/11/15
+#  Created by Piriou--Dezy, Roux, Ramonda i/o on 2023/11/15
 #
 
 from threading import Lock
@@ -23,6 +23,16 @@ lock = None
 
 # inputs
 def input_callback(iop_type, name, value_type, value, my_data):
+    """
+    Callback function for handling input changes related to gate control commands.
+
+    Parameters:
+    - iop_type: The type of I/O point.
+    - name (str): The name of the I/O point.
+    - value_type: The data type of the value.
+    - value: The current value of the input.
+    - my_data: Additional data (not used in this function).
+    """
     with lock:
         ser.reset_input_buffer()
         ser.reset_output_buffer()
