@@ -1,4 +1,4 @@
-# Mechanical Design - SolidWorks
+# Mechanical Design
 
 This section details the mechanical aspects of the project, focusing on the SolidWorks design. The mechanical components are organized into several folders, each containing specific models related to the gate control system.
 
@@ -11,7 +11,7 @@ This section details the mechanical aspects of the project, focusing on the Soli
    - The Motor Model directory holds the SolidWorks model for the stepper motor. This model represents the physical characteristics and dimensions of the motor used in the gate control mechanism.
 
 ### 3. **Gate Model**
-   - Inside the Gate Model directory, you'll find the SolidWorks model for the gate assembly. This includes the gate itself, the rack and pinion mechanism (cremaillere), and the sliding components (glissiere) that enable controlled movement.
+   - Inside the Gate Model directory, you'll find the SolidWorks model for the gate assembly. This includes the gate itself, the rack and pinion mechanism, and the sliding components that enable controlled movement.
 
 ### 4. **Support Walls**
    - The Support Walls folder contains SolidWorks models representing the walls that support the gate structure. These walls are essential for providing stability and guidance to the gate during its operation.
@@ -22,7 +22,7 @@ This section details the mechanical aspects of the project, focusing on the Soli
 ## Dependencies
 
 - **SolidWorks:**
-  - Ensure that SolidWorks is installed on your system to open and view the provided models.
+  - Ensure that SolidWorks 2018 is installed on your system to open and view the provided models.
 
 ## Usage
 
@@ -50,4 +50,4 @@ assets/model_solidworks.PNG)
 ### Physical Prototype
 ![Physical Prototype](assets/prototype.jpg)
 
-Feel free to explore and modify these SolidWorks models as needed for your specific project requirements.
+Feel free to explore these SolidWorks models.
