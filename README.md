@@ -8,7 +8,6 @@ Our group, made up of Peter PIRIOU-DEZY, Baptiste RAMONDA and Constant ROUX, opt
 ## Functionalities
 
 The final system offers a variety of functions, as detailed below:
-
     - Voice-controlled gate closing after activating the system with the defined keyword.
     - Voice-controlled gate opening after activating the system with the defined keyword.
     - The possibility of requesting gate opening by means of a bell placed at the gate entrance. This request can be confirmed or denied by voice, according to the user's wishes.
