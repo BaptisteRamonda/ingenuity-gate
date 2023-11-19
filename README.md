@@ -24,7 +24,7 @@ Graphical feedback (gate opening/closing in real time) and textual feedback (voi
 - speech_recognition
 - gTTS
 - Other dependencies specified in each component's README
-- 
+
 ### Installation
 
 ### Usage
