@@ -40,8 +40,6 @@ python3 -m pip install gtts
 python3 -m pip install pygame
 ```
 
-![How to install](software/Appel/README.md)
-
 ### Usage
 
 ## Demonstration
