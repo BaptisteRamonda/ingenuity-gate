@@ -5,6 +5,14 @@
 
 The "Appel" component handles the recognition of someone ringing the gatebell. It utilizes speech recognition to interpret voice commands, allowing the user to open or close the gate.
 
+#### Inputs
+-estAppele : boolean
+
+#### Outputs
+-commandePortail : integer
+- texteBrut : string
+
+
 ### 2. [EtatVersTexte](EtatVersTexte/main.py)
 
 The "EtatVersTexte" component converts the state of the gate into text. It observes changes in the gate's state and updates a graphical user interface accordingly.
