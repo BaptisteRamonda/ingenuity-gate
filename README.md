@@ -48,6 +48,13 @@ Using the doorbell :
 - Answer "oui" or "non" to the system's request to open the gate
 - If the answer is "oui", the gate opens, otherwise it remains closed.
 
+Monitor gate opening/closing:
+
+- Say the keyword "ok gate" and wait for the system's voice response indicating gate detection.
+- Request the gate to open or close and wait for the system's voice response.
+
+If you take too long to answer, or if the system doesn't understand you. You may need to repeat the activation keyword
+
 ## Demonstration
 ![Opening/Closing demo](demo/OuvertureFermeture.mp4)
 
