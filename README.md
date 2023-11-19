@@ -27,6 +27,19 @@ Graphical feedback (gate opening/closing in real time) and textual feedback (voi
 
 ### Installation
 
+```bash
+python3 -m pip install ingescape
+```
+```bash
+python3 -m pip install SpeechRecognition
+```
+```bash
+python3 -m pip install gtts
+```
+```bash
+python3 -m pip install pygame
+```
+
 ![How to install](software/Appel/README.md)
 
 ### Usage
