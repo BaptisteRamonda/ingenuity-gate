@@ -54,8 +54,8 @@ The "ReconnaissanceParole" component implements voice recognition to interpret u
 
 ## Visuals
 
-### Cirle platform
-![Cirle platform](
+### Circle platform
+![Circle platform](
 assets/circle_platform.png)
 
 ## Dependencies
