@@ -31,4 +31,5 @@ Graphical feedback (gate opening/closing in real time) and textual feedback (voi
 
 ## Demonstration
 ![Opening/Closing demo](demo/OuvertureFermeture.mp4)
+
 ![Gatebell demo](demo/AppelEntrant.mp4)
