@@ -16,7 +16,17 @@ The final system offers a variety of functions, as detailed below:
 Graphical feedback (gate opening/closing in real time) and textual feedback (voice command prompts) are displayed on the whiteboard, serving as a user feedback interface.
 
 ## Getting Started
+
 ### Dependencies
+- Python 3.10
+- [Ingescape](https://ingescape.com/fr/circle/)
+- pygame
+- speech_recognition
+- gTTS
+- Other dependencies specified in each component's README
+- 
 ### Installation
+
 ### Usage
+
 ## Demonstration
