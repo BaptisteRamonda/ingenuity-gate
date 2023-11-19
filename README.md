@@ -45,8 +45,8 @@ python3 -m pip install pygame
 Using the doorbell :
 
 - Press the doorbell button at the gate entrance and wait for the system's voice response
-- Answer yes or no to the system's request to open the gate
-- If the answer is yes, the gate opens, otherwise it remains closed.
+- Answer "oui" or "non" to the system's request to open the gate
+- If the answer is "oui", the gate opens, otherwise it remains closed.
 
 ## Demonstration
 ![Opening/Closing demo](demo/OuvertureFermeture.mp4)
