@@ -30,5 +30,4 @@ Graphical feedback (gate opening/closing in real time) and textual feedback (voi
 ### Usage
 
 ## Demonstration
-![Circle platform](
-assets/circle_platform.png)
+![Opening/Closing demo](demo/OuvertureFermeture.mp4)
