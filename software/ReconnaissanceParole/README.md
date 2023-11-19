@@ -5,6 +5,15 @@
 ```bash
 python3 -m pip install ingescape
 ```
+```bash
+python3 -m pip install SpeechRecognition
+```
+```bash
+python3 -m pip install gtts
+```
+```bash
+python3 -m pip install pygame
+```
 
 ## Run
 ```bash
