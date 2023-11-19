@@ -52,6 +52,12 @@ The "ReconnaissanceParole" component implements voice recognition to interpret u
 - commandePortail : integer
 - TexteBrut : string
 
+## Visuals
+
+### Cirle platform
+![Cirle platform](
+assets/circle_platform.png)
+
 ## Dependencies
 - Python 3.10
 - [Ingescape](https://ingescape.com/fr/circle/)
