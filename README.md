@@ -50,7 +50,7 @@ Using the doorbell :
 
 Monitor gate opening/closing:
 
-- Say the keyword "ok gate" and wait for the system's voice response indicating gate detection.
+- Say the keyword "ok portail" and wait for the system's voice response indicating gate detection.
 - Request the gate to open or close and wait for the system's voice response.
 
 If you take too long to answer, or if the system doesn't understand you. You may need to repeat the activation keyword
