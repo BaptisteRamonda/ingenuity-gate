@@ -27,6 +27,8 @@ Graphical feedback (gate opening/closing in real time) and textual feedback (voi
 
 ### Installation
 
+![How to install](software/Appel/README.md)
+
 ### Usage
 
 ## Demonstration
