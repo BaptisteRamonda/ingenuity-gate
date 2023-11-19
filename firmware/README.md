@@ -9,7 +9,7 @@ This Arduino project controls a gate system with the ability to open, close, and
 - `gate_setup()`: Initialize gate components such as switches, LEDs, and the stepper motor.
 - `gate_get_status()`: Retrieve the current status of the gate, including portal length and switch states.
 - `gate_open()`: Open the gate and return the state of the open switch after the movement.
-- `gate_close()`: Close the gate, set portal length to zero, and return the state of the close switch after the movement.
+- `gate_close()`: Close the gate, set the portal length to zero, and return the state of the close switch after the movement.
 - `gate_light_on()`: Turn on the gate light.
 - `gate_light_off()`: Turn off the gate light.
 
