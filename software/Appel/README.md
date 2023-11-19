@@ -5,6 +5,9 @@
 ```bash
 python3 -m pip install ingescape
 ```
+```bash
+python3 -m pip install SpeechRecognition
+```
 
 ## Run
 ```bash
