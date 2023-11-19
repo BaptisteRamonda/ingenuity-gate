@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Loading/BlockLoadingAnimation.qml</file>
+        <file>qml/Loading/LoadingScreen.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Menus/+nativemenubar/AppMenuBar.qml</file>
+        <file>qml/Menus/AppMenuBar.qml</file>
+        <file>qml/Whiteboard/Content.qml</file>
+        <file>qml/Whiteboard/WhiteboardTheme.qml</file>
+        <file>qml/Whiteboard/ChatView.qml</file>
+        <file>qml/Whiteboard/ElementInfo.qml</file>
+        <file alias="resources/fonts/asap/Asap-Bold.ttf">../../thirdparty/fonts/asap/Asap-Bold.ttf</file>
+        <file alias="resources/fonts/asap/Asap-Regular.ttf">../../thirdparty/fonts/asap/Asap-Regular.ttf</file>
+        <file>resources/images/chat-icon.svg</file>
+    </qresource>
+</RCC>

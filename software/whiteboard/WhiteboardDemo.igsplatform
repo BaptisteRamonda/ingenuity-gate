@@ -1,0 +1,2285 @@
+{
+    "eventsTimeline": {
+        "events": [
+            {
+                "conditions": [
+                ],
+                "effects": [
+                    {
+                        "agent": "Whiteboard",
+                        "arguments": [
+                            {
+                                "name": "type",
+                                "value": "rectangle"
+                            },
+                            {
+                                "name": "x",
+                                "value": "100"
+                            },
+                            {
+                                "name": "y",
+                                "value": "100"
+                            },
+                            {
+                                "name": "width",
+                                "value": "220"
+                            },
+                            {
+                                "name": "height",
+                                "value": "60"
+                            },
+                            {
+                                "name": "fill",
+                                "value": "green"
+                            },
+                            {
+                                "name": "stroke",
+                                "value": "blue"
+                            },
+                            {
+                                "name": "strokeWidth",
+                                "value": "3"
+                            }
+                        ],
+                        "order": 1,
+                        "service": "addShape",
+                        "type": "SERVICE"
+                    },
+                    {
+                        "agent": "Whiteboard",
+                        "arguments": [
+                            {
+                                "name": "text",
+                                "value": "New Alarm !!"
+                            },
+                            {
+                                "name": "x",
+                                "value": "105"
+                            },
+                            {
+                                "name": "y",
+                                "value": "105"
+                            },
+                            {
+                                "name": "color",
+                                "value": "red"
+                            }
+                        ],
+                        "order": 2,
+                        "service": "addText",
+                        "type": "SERVICE"
+                    }
+                ],
+                "name": "alarme",
+                "orderId": 1,
+                "triggering": {
+                    "duration": 0,
+                    "random": false,
+                    "randomMax": 0,
+                    "randomMin": 0,
+                    "repeat": false,
+                    "repeatInterval": 0,
+                    "temporality": "IMMEDIATE"
+                }
+            },
+            {
+                "conditions": [
+                ],
+                "effects": [
+                    {
+                        "agent": "Whiteboard",
+                        "iop": "backgroundColor",
+                        "iopValueType": "STRING",
+                        "order": 1,
+                        "type": "IOP",
+                        "value": "#FFFFFF"
+                    }
+                ],
+                "name": "board in white",
+                "orderId": 2,
+                "triggering": {
+                    "duration": 10500,
+                    "random": false,
+                    "randomMax": 0,
+                    "randomMin": 0,
+                    "repeat": true,
+                    "repeatInterval": 1000,
+                    "temporality": "DURATION"
+                }
+            },
+            {
+                "conditions": [
+                ],
+                "effects": [
+                    {
+                        "agent": "Whiteboard",
+                        "iop": "backgroundColor",
+                        "iopValueType": "STRING",
+                        "order": 1,
+                        "type": "IOP",
+                        "value": "#FF0000"
+                    }
+                ],
+                "name": "board in red",
+                "orderId": 3,
+                "triggering": {
+                    "duration": 10000,
+                    "random": false,
+                    "randomMax": 0,
+                    "randomMin": 0,
+                    "repeat": true,
+                    "repeatInterval": 1000,
+                    "temporality": "DURATION"
+                }
+            },
+            {
+                "conditions": [
+                ],
+                "effects": [
+                    {
+                        "agent": "Whiteboard",
+                        "iop": "clear",
+                        "iopValueType": "IMPULSION",
+                        "order": 1,
+                        "type": "IOP",
+                        "value": null
+                    }
+                ],
+                "name": "clear",
+                "orderId": 4,
+                "triggering": {
+                    "duration": 0,
+                    "random": false,
+                    "randomMax": 0,
+                    "randomMin": 0,
+                    "repeat": false,
+                    "repeatInterval": 0,
+                    "temporality": "IMMEDIATE"
+                }
+            },
+            {
+                "conditions": [
+                    {
+                        "agent": "Whiteboard",
+                        "operator": "EQUAL",
+                        "order": 1,
+                        "output": "lastAction",
+                        "outputValueType": "STRING",
+                        "type": "VALUE",
+                        "value": "Input clear"
+                    }
+                ],
+                "effects": [
+                    {
+                        "agent": "Whiteboard",
+                        "iop": "chatMessage",
+                        "iopValueType": "STRING",
+                        "order": 1,
+                        "type": "IOP",
+                        "value": "End of the Alarm !!"
+                    }
+                ],
+                "name": "chat",
+                "orderId": 5,
+                "triggering": {
+                    "duration": 0,
+                    "random": false,
+                    "randomMax": 0,
+                    "randomMin": 0,
+                    "repeat": true,
+                    "repeatInterval": 1000,
+                    "temporality": "PERMANENT"
+                }
+            }
+        ],
+        "patterns": [
+        ],
+        "timelines": [
+            {
+                "eventInstances": [
+                    {
+                        "refId": 1,
+                        "startTime": 8000
+                    },
+                    {
+                        "refId": 5,
+                        "startTime": 0
+                    },
+                    {
+                        "refId": 2,
+                        "startTime": 8500
+                    },
+                    {
+                        "refId": 3,
+                        "startTime": 8000
+                    },
+                    {
+                        "refId": 4,
+                        "startTime": 19320
+                    }
+                ],
+                "name": "Timeline_1",
+                "order": 0,
+                "patternInstances": [
+                ]
+            }
+        ]
+    },
+    "platform": {
+        "agents": [
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "A simple collaborative whiteboard",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "title",
+                            "type": "STRING"
+                        },
+                        {
+                            "description": "",
+                            "name": "backgroundColor",
+                            "type": "STRING"
+                        },
+                        {
+                            "description": "",
+                            "name": "chatMessage",
+                            "type": "STRING"
+                        },
+                        {
+                            "description": "",
+                            "name": "clear",
+                            "type": "IMPULSION"
+                        },
+                        {
+                            "description": "",
+                            "name": "ui_command",
+                            "type": "STRING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "Whiteboard",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "lastChatMessage",
+                            "type": "STRING"
+                        },
+                        {
+                            "description": "",
+                            "name": "lastAction",
+                            "type": "STRING"
+                        },
+                        {
+                            "description": "",
+                            "name": "ui_error",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                        {
+                            "arguments": [
+                                {
+                                    "name": "message",
+                                    "type": "STRING"
+                                }
+                            ],
+                            "name": "chat"
+                        },
+                        {
+                            "arguments": [
+                            ],
+                            "name": "snapshot",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "base64Png",
+                                            "type": "DATA"
+                                        }
+                                    ],
+                                    "name": "snapshotResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                            ],
+                            "name": "clear"
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "type",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "x",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "y",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "width",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "height",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "fill",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "stroke",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "strokeWidth",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "addShape",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "elementId",
+                                            "type": "INTEGER"
+                                        }
+                                    ],
+                                    "name": "elementCreated"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "text",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "x",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "y",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "color",
+                                    "type": "STRING"
+                                }
+                            ],
+                            "name": "addText",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "elementId",
+                                            "type": "INTEGER"
+                                        }
+                                    ],
+                                    "name": "elementCreated"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "base64",
+                                    "type": "DATA"
+                                },
+                                {
+                                    "name": "x",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "y",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "width",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "height",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "addImage",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "elementId",
+                                            "type": "INTEGER"
+                                        }
+                                    ],
+                                    "name": "elementCreated"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "url",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "x",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "y",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "addImageFromUrl",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "elementId",
+                                            "type": "INTEGER"
+                                        }
+                                    ],
+                                    "name": "elementCreated"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                }
+                            ],
+                            "name": "remove",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "succeeded",
+                                            "type": "BOOL"
+                                        }
+                                    ],
+                                    "name": "actionResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                },
+                                {
+                                    "name": "dx",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "dy",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "translate",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "succeeded",
+                                            "type": "BOOL"
+                                        }
+                                    ],
+                                    "name": "actionResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                },
+                                {
+                                    "name": "x",
+                                    "type": "DOUBLE"
+                                },
+                                {
+                                    "name": "y",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "moveTo",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "succeeded",
+                                            "type": "BOOL"
+                                        }
+                                    ],
+                                    "name": "actionResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                },
+                                {
+                                    "name": "property",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "STRING"
+                                }
+                            ],
+                            "name": "setStringProperty",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "succeeded",
+                                            "type": "BOOL"
+                                        }
+                                    ],
+                                    "name": "actionResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                },
+                                {
+                                    "name": "property",
+                                    "type": "STRING"
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "setDoubleProperty",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "succeeded",
+                                            "type": "BOOL"
+                                        }
+                                    ],
+                                    "name": "actionResult"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                            ],
+                            "name": "getElementIds",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "jsonArray",
+                                            "type": "STRING"
+                                        }
+                                    ],
+                                    "name": "elementIds"
+                                }
+                            ]
+                        },
+                        {
+                            "arguments": [
+                            ],
+                            "name": "getElements",
+                            "replies": [
+                                {
+                                    "arguments": [
+                                        {
+                                            "name": "jsonArray",
+                                            "type": "STRING"
+                                        }
+                                    ],
+                                    "name": "elements"
+                                }
+                            ]
+                        }
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Whiteboard",
+                "instances": [
+                    {
+                        "commandLine": "/Users/lex/Documents/IngenuityIO/GIT/ingenuity/i2gitlab/ingescape/work/build-WhiteboardDemo-Qt_6_2_4_for_macOS-Debug/apps/Whiteboard/Whiteboard.app/Contents/MacOS/Whiteboard",
+                        "hostname": "knik.home",
+                        "ipAddress": "192.168.1.13",
+                        "mac": "78:4F:43:61:57:63"
+                    },
+                    {
+                        "commandLine": "C:\\Users\\peter\\Downloads\\Whiteboard\\Whiteboard\\Whiteboard.exe --device Wi-Fi --port 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 416,
+                    "positionY": 106,
+                    "positionZ": 7.339999999999887,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "A simple companion app uses to display a snapshot of our Whiteboard app",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "ui_command",
+                            "type": "STRING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "Snapshot",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "ui_error",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                        {
+                            "arguments": [
+                                {
+                                    "name": "base64Png",
+                                    "type": "DATA"
+                                }
+                            ],
+                            "name": "snapshotResult"
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                }
+                            ],
+                            "name": "elementCreated"
+                        }
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Snapshot",
+                "instances": [
+                    {
+                        "commandLine": "/Users/lex/Documents/IngenuityIO/GIT/ingenuity/i2gitlab/ingescape/work/build-WhiteboardDemo-Qt_6_2_4_for_macOS-Debug/apps/Snapshot/Snapshot.app/Contents/MacOS/Snapshot",
+                        "hostname": "knik.home",
+                        "ipAddress": "192.168.1.13",
+                        "mac": "78:4F:43:61:57:63"
+                    },
+                    {
+                        "commandLine": "/private/var/folders/p9/c__n_hld4m57v4b3x0cndqgh0000gn/T/AppTranslocation/0C0C8BE1-7B1A-4ABC-89D9-1EE5457CBDBF/d/Snapshot.app/Contents/MacOS/Snapshot",
+                        "hostname": "knik.home",
+                        "ipAddress": "192.168.1.13",
+                        "mac": "78:4F:43:61:57:63"
+                    },
+                    {
+                        "commandLine": "/private/var/folders/p9/c__n_hld4m57v4b3x0cndqgh0000gn/T/AppTranslocation/F8448807-620D-4A3A-B6A2-41807829E0D9/d/Snapshot.app/Contents/MacOS/Snapshot",
+                        "hostname": "knik.home",
+                        "ipAddress": "192.168.1.13",
+                        "mac": "78:4F:43:61:57:63"
+                    },
+                    {
+                        "commandLine": "/Users/lex/Documents/IngenuityIO/GIT/ingenuity/i2gitlab/ingescape/work/build-WhiteboardDemo-Qt_6_2_4_for_macOS-Debug/apps/Snapshot/Snapshot.app/Contents/MacOS/Snapshot",
+                        "hostname": "knik.local",
+                        "ipAddress": "172.20.10.2",
+                        "mac": "F6:65:A6:7A:C2:8C"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 394,
+                    "positionY": -46,
+                    "positionZ": 7.069999999999893,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "commandePortail",
+                            "type": "INTEGER"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "Maquette",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "estOuvert",
+                            "type": "BOOL"
+                        },
+                        {
+                            "description": "",
+                            "name": "estFerme",
+                            "type": "BOOL"
+                        },
+                        {
+                            "description": "",
+                            "name": "estAppele",
+                            "type": "BOOL"
+                        },
+                        {
+                            "description": "",
+                            "name": "distanceParcourue",
+                            "type": "DOUBLE"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Maquette",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\venv\\Scripts\\python.exe C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\Maquette\\main.py Maquette Wi-Fi 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 0,
+                    "positionY": 533,
+                    "positionZ": 9.13999999999985,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                    ],
+                    "isDynamic": false,
+                    "name": "ReconnaissanceParole",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "commandePortail",
+                            "type": "INTEGER"
+                        },
+                        {
+                            "description": "",
+                            "name": "TexteBrut",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "ReconnaissanceParole",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\venv\\Scripts\\python.exe C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\ReconnaissanceParole\\main.py ReconnaissanceParole Wi-Fi 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": -382,
+                    "positionY": 551,
+                    "positionZ": 9.029999999999852,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "distanceParcourue",
+                            "type": "DOUBLE"
+                        },
+                        {
+                            "description": "",
+                            "name": "initialisation",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "Interface",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Interface",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\venv\\Scripts\\python.exe C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\Interface\\main.py Interface Wi-Fi 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 898,
+                    "positionY": 581,
+                    "positionZ": 9.10999999999985,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "estOuvert",
+                            "type": "BOOL"
+                        },
+                        {
+                            "description": "",
+                            "name": "estFerme",
+                            "type": "BOOL"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "EtatVersTexte",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "titre",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "EtatVersTexte",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\venv\\Scripts\\python.exe C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\EtatVersTexte\\main.py EtatVersTexte Wi-Fi 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 399,
+                    "positionY": 298,
+                    "positionZ": 9.169999999999849,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "estAppele",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "Appel",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "commandePortail",
+                            "type": "INTEGER"
+                        },
+                        {
+                            "description": "",
+                            "name": "texteBrut",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Appel",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\venv\\Scripts\\python.exe C:\\Users\\peter\\OneDrive\\Documents\\Ingescape\\sandbox\\Appel\\main.py Appel Wi-Fi 5670",
+                        "hostname": "Dell_G15_P",
+                        "ipAddress": "172.17.63.99",
+                        "mac": "7C:21:4A:DB:69:01"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 705,
+                    "positionY": 438,
+                    "positionZ": 9.239999999999847,
+                    "width": 252
+                }
+            }
+        ],
+        "mappings": [
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "chatMessage",
+                "toAgent": "3ee43eed-3ee9-47e5-b6c3-c5faa10cc185",
+                "toOutput": "value"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "clear",
+                "toAgent": "afb536fa-1c68-4f49-a4e2-6d7deaf3ea3c",
+                "toOutput": "value"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "title",
+                "toAgent": "14e82c22-280f-410f-80e4-26081ce8229d",
+                "toOutput": "value"
+            },
+            {
+                "fromAgent": "d62327d6-a2b0-4a5d-9634-c003af79ce35",
+                "fromInput": "wildcard",
+                "toAgent": "Whiteboard",
+                "toOutput": "lastAction"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "backgroundColor",
+                "toAgent": "412ec8b2-6095-4e74-b1c7-5b423ac2bdea",
+                "toOutput": "value"
+            },
+            {
+                "fromAgent": "8cb180b7-e64d-431e-9769-99a18e3681a6",
+                "fromInput": "wildcard",
+                "toAgent": "Whiteboard",
+                "toOutput": "lastChatMessage"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "chatMessage",
+                "toAgent": "ReconnaissanceParole",
+                "toOutput": "TexteBrut"
+            },
+            {
+                "fromAgent": "Maquette",
+                "fromInput": "commandePortail",
+                "toAgent": "ReconnaissanceParole",
+                "toOutput": "commandePortail"
+            },
+            {
+                "fromAgent": "228eb898-9867-4e65-bad6-512b90a22ca3",
+                "fromInput": "wildcard",
+                "toAgent": "Maquette",
+                "toOutput": "estOuvert"
+            },
+            {
+                "fromAgent": "4077bced-a4db-48ce-95b6-10268bcf355d",
+                "fromInput": "wildcard",
+                "toAgent": "Maquette",
+                "toOutput": "estFerme"
+            },
+            {
+                "fromAgent": "f0c7100d-70dc-40f3-88ab-072633501355",
+                "fromInput": "wildcard",
+                "toAgent": "Maquette",
+                "toOutput": "estAppele"
+            },
+            {
+                "fromAgent": "ba3ffff4-74a6-4a26-bc75-d021abf795a9",
+                "fromInput": "wildcard",
+                "toAgent": "Maquette",
+                "toOutput": "distanceParcourue"
+            },
+            {
+                "fromAgent": "Interface",
+                "fromInput": "distanceParcourue",
+                "toAgent": "Maquette",
+                "toOutput": "distanceParcourue"
+            },
+            {
+                "fromAgent": "Interface",
+                "fromInput": "initialisation",
+                "toAgent": "6476cdc9-03f3-4272-9ce0-0ad1f7f0bed3",
+                "toOutput": "value"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "title",
+                "toAgent": "EtatVersTexte",
+                "toOutput": "titre"
+            },
+            {
+                "fromAgent": "EtatVersTexte",
+                "fromInput": "estOuvert",
+                "toAgent": "Maquette",
+                "toOutput": "estOuvert"
+            },
+            {
+                "fromAgent": "EtatVersTexte",
+                "fromInput": "estFerme",
+                "toAgent": "Maquette",
+                "toOutput": "estFerme"
+            },
+            {
+                "fromAgent": "Appel",
+                "fromInput": "estAppele",
+                "toAgent": "Maquette",
+                "toOutput": "estAppele"
+            },
+            {
+                "fromAgent": "Maquette",
+                "fromInput": "commandePortail",
+                "toAgent": "Appel",
+                "toOutput": "commandePortail"
+            },
+            {
+                "fromAgent": "Whiteboard",
+                "fromInput": "chatMessage",
+                "toAgent": "Appel",
+                "toOutput": "texteBrut"
+            }
+        ],
+        "splits": [
+        ],
+        "splitters": [
+        ],
+        "tools": [
+            {
+                "data": {
+                    "entry 0": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "fbba66d6-8d60-4694-b5fa-63b6f3f51e63",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "value",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "3ee43eed-3ee9-47e5-b6c3-c5faa10cc185",
+                "instances": [
+                ],
+                "view": {
+                    "height": 109,
+                    "isCollapsed": false,
+                    "positionX": -236,
+                    "positionY": 283,
+                    "positionZ": 8.259999999999868,
+                    "width": 256
+                }
+            },
+            {
+                "data": {
+                    "entry 0": ""
+                },
+                "definition": {
+                    "description": "",
+                    "family": "fbba66d6-8d60-4694-b5fa-63b6f3f51e63",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "value",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "afb536fa-1c68-4f49-a4e2-6d7deaf3ea3c",
+                "instances": [
+                ],
+                "view": {
+                    "height": 44,
+                    "isCollapsed": false,
+                    "positionX": -234,
+                    "positionY": 433,
+                    "positionZ": 8.289999999999868,
+                    "width": 256
+                }
+            },
+            {
+                "data": {
+                    "entry 0": "Whiteboard"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "fbba66d6-8d60-4694-b5fa-63b6f3f51e63",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "value",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "14e82c22-280f-410f-80e4-26081ce8229d",
+                "instances": [
+                ],
+                "view": {
+                    "height": 79,
+                    "isCollapsed": false,
+                    "positionX": -237,
+                    "positionY": 42,
+                    "positionZ": 7.979999999999873,
+                    "width": 256
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "d62327d6-a2b0-4a5d-9634-c003af79ce35",
+                "instances": [
+                ],
+                "view": {
+                    "height": 98,
+                    "isCollapsed": false,
+                    "positionX": 739,
+                    "positionY": 287,
+                    "positionZ": 7.329999999999887,
+                    "width": 420
+                }
+            },
+            {
+                "data": {
+                    "entry 0": "#FFFFFF"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "fbba66d6-8d60-4694-b5fa-63b6f3f51e63",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "value",
+                            "type": "STRING"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "412ec8b2-6095-4e74-b1c7-5b423ac2bdea",
+                "instances": [
+                ],
+                "view": {
+                    "height": 52,
+                    "isCollapsed": false,
+                    "positionX": -235,
+                    "positionY": 164,
+                    "positionZ": 4.589999999999946,
+                    "width": 256
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "8cb180b7-e64d-431e-9769-99a18e3681a6",
+                "instances": [
+                ],
+                "view": {
+                    "height": 79,
+                    "isCollapsed": false,
+                    "positionX": 742,
+                    "positionY": 155,
+                    "positionZ": 8.19999999999987,
+                    "width": 348
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "type": "rectangle"
+                        },
+                        {
+                            "x": "1000"
+                        },
+                        {
+                            "y": "0"
+                        },
+                        {
+                            "width": "100"
+                        },
+                        {
+                            "height": "1500"
+                        },
+                        {
+                            "fill": "black"
+                        },
+                        {
+                            "stroke": "black"
+                        },
+                        {
+                            "strokeWidth": "3"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "addShape"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "21507443-ea45-4b7a-b6f7-471785b85aee",
+                "instances": [
+                ],
+                "view": {
+                    "height": 458,
+                    "isCollapsed": true,
+                    "positionX": -18,
+                    "positionY": 775,
+                    "positionZ": 8.419999999999865,
+                    "width": 279
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "message": "new chat message"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "chat"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "31abc7a8-21de-48a8-8891-bb7747c7f075",
+                "instances": [
+                ],
+                "view": {
+                    "height": 188,
+                    "isCollapsed": false,
+                    "positionX": -319,
+                    "positionY": 777,
+                    "positionZ": 8.459999999999864,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "type": "ellipse"
+                        },
+                        {
+                            "x": "35"
+                        },
+                        {
+                            "y": "50"
+                        },
+                        {
+                            "width": "50"
+                        },
+                        {
+                            "height": "50"
+                        },
+                        {
+                            "fill": "red"
+                        },
+                        {
+                            "stroke": "black"
+                        },
+                        {
+                            "strokeWidth": "3"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "addShape"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "fec3aa4b-b393-437c-a0a0-8616aea36f98",
+                "instances": [
+                ],
+                "view": {
+                    "height": 451,
+                    "isCollapsed": false,
+                    "positionX": 318,
+                    "positionY": 777,
+                    "positionZ": 8.789999999999857,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "text": "new text item"
+                        },
+                        {
+                            "x": "350"
+                        },
+                        {
+                            "y": "100"
+                        },
+                        {
+                            "color": "blue"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "addText"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "9fa309e2-b8f6-4cd9-b661-8e23284f7ade",
+                "instances": [
+                ],
+                "view": {
+                    "height": 271,
+                    "isCollapsed": false,
+                    "positionX": 596,
+                    "positionY": 778,
+                    "positionZ": 8.449999999999864,
+                    "width": 308
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "url": "https://raw.githubusercontent.com/TakWolf/NyanCatEverywhere/master/img/nyancat.gif"
+                        },
+                        {
+                            "x": "350"
+                        },
+                        {
+                            "y": "300"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "addImageFromUrl"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "6edb2bab-299d-4bf6-9ca5-b7b553cc0588",
+                "instances": [
+                ],
+                "view": {
+                    "height": 263,
+                    "isCollapsed": false,
+                    "positionX": 939,
+                    "positionY": 786,
+                    "positionZ": 5.569999999999925,
+                    "width": 260
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "clear"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "f86d6574-dbf7-4b5f-a5d3-198684e1d5d3",
+                "instances": [
+                ],
+                "view": {
+                    "height": 188,
+                    "isCollapsed": false,
+                    "positionX": -627,
+                    "positionY": 782,
+                    "positionZ": 9.269999999999847,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "3"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "remove"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "68bdcb48-fe63-451a-9c84-3965bb30ec7d",
+                "instances": [
+                ],
+                "view": {
+                    "height": 261,
+                    "isCollapsed": false,
+                    "positionX": 1236,
+                    "positionY": 788,
+                    "positionZ": 5.459999999999927,
+                    "width": 269
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "0"
+                        },
+                        {
+                            "x": "100"
+                        },
+                        {
+                            "y": "100"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "moveTo"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "1bc90a1b-a590-4083-b671-101ed0eb705f",
+                "instances": [
+                ],
+                "view": {
+                    "height": 256,
+                    "isCollapsed": false,
+                    "positionX": 1809,
+                    "positionY": 793,
+                    "positionZ": 5.419999999999928,
+                    "width": 255
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "getElementIds"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "d7ef878b-e92e-4d45-b2ae-88da5744906d",
+                "instances": [
+                ],
+                "view": {
+                    "height": 188,
+                    "isCollapsed": false,
+                    "positionX": 2132,
+                    "positionY": 795,
+                    "positionZ": 8.879999999999855,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "selectedAgent": "Ingescape Circle"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d147878381016",
+                    "inputs": [
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "6dd27492-9459-4597-a38f-bdff91f38fbe",
+                "instances": [
+                ],
+                "view": {
+                    "height": 535,
+                    "isCollapsed": false,
+                    "positionX": 1908,
+                    "positionY": 974,
+                    "positionZ": 8.919999999999854,
+                    "width": 897
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "getElements"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "a944824a-f85b-4e77-8a2f-f50af9a8bb2e",
+                "instances": [
+                ],
+                "view": {
+                    "height": 75,
+                    "isCollapsed": false,
+                    "positionX": 2413,
+                    "positionY": 795,
+                    "positionZ": 8.909999999999854,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "snapshot"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "f8ed5670-137b-403e-bb4c-ab997db09376",
+                "instances": [
+                ],
+                "view": {
+                    "height": 75,
+                    "isCollapsed": false,
+                    "positionX": 2692,
+                    "positionY": 795,
+                    "positionZ": 8.399999999999865,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "1"
+                        },
+                        {
+                            "dx": "-10"
+                        },
+                        {
+                            "dy": "0"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "translate"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "74b7d1e3-d9b3-4d83-a945-01677d5c4177",
+                "instances": [
+                ],
+                "view": {
+                    "height": 257,
+                    "isCollapsed": false,
+                    "positionX": 1533,
+                    "positionY": 794,
+                    "positionZ": 8.539999999999862,
+                    "width": 246
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "0"
+                        },
+                        {
+                            "property": "strokewidth"
+                        },
+                        {
+                            "value": "20"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "setDoubleProperty"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "13367c6d-ca88-4250-9ad1-ed6c478c2b26",
+                "instances": [
+                ],
+                "view": {
+                    "height": 251,
+                    "isCollapsed": false,
+                    "positionX": 572,
+                    "positionY": 1128,
+                    "positionZ": 8.62999999999986,
+                    "width": 314
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "0"
+                        },
+                        {
+                            "property": "fill"
+                        },
+                        {
+                            "value": "red"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "setStringProperty"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "913d0a56-ebe9-415c-af3e-4922900afff8",
+                "instances": [
+                ],
+                "view": {
+                    "height": 241,
+                    "isCollapsed": false,
+                    "positionX": 928,
+                    "positionY": 1110,
+                    "positionZ": 8.739999999999858,
+                    "width": 293
+                }
+            },
+            {
+                "data": {
+                    "arguments": [
+                        {
+                            "elementId": "2"
+                        },
+                        {
+                            "property": "text"
+                        },
+                        {
+                            "value": "hello world"
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "setStringProperty"
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "9764fa6a-4d7e-42a3-a957-3bd1c370ac27",
+                "instances": [
+                ],
+                "view": {
+                    "height": 246,
+                    "isCollapsed": false,
+                    "positionX": 1242,
+                    "positionY": 1109,
+                    "positionZ": 5.729999999999921,
+                    "width": 290
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "228eb898-9867-4e65-bad6-512b90a22ca3",
+                "instances": [
+                ],
+                "view": {
+                    "height": 46,
+                    "isCollapsed": false,
+                    "positionX": 272,
+                    "positionY": 450,
+                    "positionZ": 9.069999999999851,
+                    "width": 180
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "4077bced-a4db-48ce-95b6-10268bcf355d",
+                "instances": [
+                ],
+                "view": {
+                    "height": 46,
+                    "isCollapsed": false,
+                    "positionX": 313,
+                    "positionY": 529,
+                    "positionZ": 9.07999999999985,
+                    "width": 180
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "f0c7100d-70dc-40f3-88ab-072633501355",
+                "instances": [
+                ],
+                "view": {
+                    "height": 46,
+                    "isCollapsed": false,
+                    "positionX": 579,
+                    "positionY": 538,
+                    "positionZ": 9.08999999999985,
+                    "width": 180
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "ba3ffff4-74a6-4a26-bc75-d021abf795a9",
+                "instances": [
+                ],
+                "view": {
+                    "height": 46,
+                    "isCollapsed": false,
+                    "positionX": 354,
+                    "positionY": 645,
+                    "positionZ": 9.09999999999985,
+                    "width": 180
+                }
+            },
+            {
+                "data": {
+                    "entry 0": ""
+                },
+                "definition": {
+                    "description": "",
+                    "family": "fbba66d6-8d60-4694-b5fa-63b6f3f51e63",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "trigger",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                        {
+                            "description": "",
+                            "name": "value",
+                            "type": "IMPULSION"
+                        }
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "6476cdc9-03f3-4272-9ce0-0ad1f7f0bed3",
+                "instances": [
+                ],
+                "view": {
+                    "height": 52,
+                    "isCollapsed": false,
+                    "positionX": 597,
+                    "positionY": 681,
+                    "positionZ": 9.279999999999847,
+                    "width": 256
+                }
+            }
+        ]
+    },
+    "snippets": [
+        {
+            "code": "let inputMessage = Igs.createInput(Context.agent, \"message\", IOPValueType.STRING);\n\ninputMessage.written.connect(() => {\n    log(\"New message\", inputMessage.currentValue);\n    Igs.callService(\"Whiteboard\", \"chat\", inputMessage.currentValue);\n});\n",
+            "identity": "8336dd30-fddf-486a-956a-d672b1d25aee",
+            "name": "ParrotBot"
+        },
+        {
+            "code": "// My snippet\nlet inputRun = Igs.createInput(Context.agent, \"run\", IOPValueType.IMPULSION);\nlet inputStop = Igs.createInput(Context.agent, \"stop\", IOPValueType.IMPULSION);\n\nlet timerId = -1;\nlet cx = 550.0;\nlet cy = 450.0;\nlet r = 300.0;\nlet rx = 50.0;\nlet ry = 25.0;\nlet elementId = 2;\nlet angle = 0;\nlet deltaAngle = Math.PI/90;\n\n\ninputRun.written.connect(() => {\n    if (timerId >= 0)\n        clearInterval(timerId);\n\n    Igs.callService(\"Whiteboard\", \"clear\");\n    Igs.callService(\"Whiteboard\", \"chat\", \"This is a test message\");\n    Igs.callService(\"Whiteboard\", \"addText\", \"Hello world\", Number(100.0), Number(10.0), \"blue\");\n    Igs.callService(\"Whiteboard\", \"addShape\", \"rectangle\", Number(10.0), Number(100.0), Number(100.0), Number(50.0), \"green\", \"red\", Number(4));\n    Igs.callService(\"Whiteboard\", \"addShape\", \"ellipse\", Number(cx + r - rx), Number(cy - ry), Number(2 * rx), Number(2 * ry), \"red\", \"orange\", Number(4));\n    Igs.callService(\"Whiteboard\", \"addShape\", \"rectangle\", Number(cx + r), Number(cy), Number(10), Number(10), \"black\", \"transparent\", Number(0));\n    Igs.callService(\"Whiteboard\", \"addImageFromUrl\", \"https://raw.githubusercontent.com/TakWolf/NyanCatEverywhere/master/img/nyancat.gif\", Number(250), Number(100));\n    \n    timerId = setInterval(moveElement, 50);\n});\n\n\ninputStop.written.connect(() => {\n    if (timerId >= 0)\n        clearInterval(timerId);\n});\n\n\nfunction moveElement()\n{\n    let newAngle = angle + deltaAngle;\n    let x = cx + r * Math.cos(newAngle);\n    let y = cy + r * Math.sin(newAngle);\n    angle = newAngle;\n    \n    let dx = 8 * (Math.random() - 0.5);\n    let dy = 8 * (Math.random() - 0.5);\n    \n    Igs.callService(\"Whiteboard\", \"moveTo\", elementId, Number(x), Number(y));\n    Igs.callService(\"Whiteboard\", \"translate\", elementId + 1, Number(dx), Number(dy));\n}",
+            "identity": "fba53474-349d-4ea5-a56c-4353bfc103cf",
+            "name": "Test"
+        },
+        {
+            "code": "let inputRun = Igs.createInput(Context.agent, \"run\", IOPValueType.IMPULSION);\nlet inputStop = Igs.createInput(Context.agent, \"stop\", IOPValueType.IMPULSION);\n\nlet timerId = -1;\nlet elementId = 0;\nlet cy = 200;\nlet r = 200; \nlet angle = 0;\nlet deltaAngle = Math.PI/90;\n\ninputRun.written.connect(() => {\n    if (timerId >= 0)\n        clearInterval(timerId);\n\n    Igs.callService(\"Whiteboard\", \"clear\");\n    Igs.callService(\"Whiteboard\", \"addImageFromUrl\", \"https://upload.wikimedia.org/wikipedia/fr/1/1b/Logo-toulouse-inp-N7.png\", Number(50), Number(cy));\n    Igs.callService(\"Whiteboard\", \"addShape\", \"rectangle\", Number(640), Number(90), Number(185), Number(65), \"white\", \"#1947BA\", Number(4));\n    Igs.callService(\"Whiteboard\", \"addText\", \"Cours IHM\", Number(650), Number(100), \"#1947BA\");\n    timerId = setInterval(moveElement, 25);\n});\n\n\ninputStop.written.connect(() => {\n    if (timerId >= 0)\n        clearInterval(timerId);\n});\n\n\nfunction moveElement()\n{\n    let newAngle = angle + deltaAngle;\n    let dy = r * (Math.sin(newAngle) - Math.sin(angle));\n    angle = newAngle;\n    \n    Igs.callService(\"Whiteboard\", \"translate\", elementId, Number(0), Number(dy));\n}\n",
+            "identity": "e5367605-70ab-47c8-a0f5-e8b992205e0d",
+            "name": "N7"
+        }
+    ]
+}

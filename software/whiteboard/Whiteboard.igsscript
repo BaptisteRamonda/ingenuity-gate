@@ -1,0 +1,86 @@
+/*
+* Whiteboard app
+*/
+
+"Clean-up" {
+    Whiteboard.clear()
+    Whiteboard.title = "Title"
+    Whiteboard.backgroundColor = "white"
+    assert user "Title is 'Title' and background is white"
+}
+
+
+"Inputs" "Test inputs" {
+    Whiteboard.title = "Hello world"
+    assert user "Title is 'Hello world'"
+
+    Whiteboard.backgroundColor = "pink"
+    assert user "Background color is pink"
+
+    Whiteboard.backgroundColor = "white"
+    assert Whiteboard.lastAction == "Input backgroundColor: white"
+
+    Whiteboard.chatMessage = "Lorem ipsum sic dolor amet"
+    assert Whiteboard.lastChatMessage == "Lorem ipsum sic dolor amet"
+}
+
+
+"Services" "Test services" {
+    Whiteboard.clear()
+    sleep 100
+
+    Whiteboard.chat("Hello")
+    assert Whiteboard.lastAction == "Service chat: Hello" 
+    
+    Whiteboard.addText("Hello", 10, 10, "black")
+    assert elementCreated from Whiteboard
+
+    Whiteboard.addShape("rectangle", 10, 10, 100, 100, "#8000FF00", "transparent", 0)
+    assert elementCreated from Whiteboard
+
+    Whiteboard.addShape("ellipse", 110, 10, 100, 100, "#80FF0000", "transparent", 0)
+    assert elementCreated from Whiteboard
+
+    Whiteboard.addImageFromUrl("https://upload.wikimedia.org/wikipedia/fr/1/1b/Logo-toulouse-inp-N7.png", 10, 130)
+    assert elementCreated from Whiteboard
+
+    sleep 1000
+
+    Whiteboard.setStringProperty(0, "text", "World")
+    assert actionResult from Whiteboard
+    assert user "Text of Item 0 is now 'World'"
+
+    Whiteboard.setDoubleProperty(1, "opacity", 0.0)
+    assert actionResult from Whiteboard
+    assert user "Green rectangle is not visible"
+
+    Whiteboard.setDoubleProperty(1, "opacity", 1.0)
+    assert actionResult from Whiteboard
+    assert user "Green rectangle is back i.e. visible again"
+
+    Whiteboard.setDoubleProperty(2, "width", 300.0)
+    assert actionResult from Whiteboard
+    assert user "Red circle is now an ellispe"
+
+    Whiteboard.setStringProperty(3, "source", "https://raw.githubusercontent.com/TakWolf/NyanCatEverywhere/master/img/nyancat.gif")
+    assert actionResult from Whiteboard
+    assert user "Image displays a cat"
+
+    Whiteboard.remove(3)
+    assert actionResult from Whiteboard
+
+    Whiteboard.translate(0, 400, 0)
+    assert user "Item 0 ('World') has moved to the right side"
+
+    Whiteboard.moveTo(0, 10, 10)
+    assert actionResult from Whiteboard
+
+    Whiteboard.getElementIds()
+    assert elementIds from Whiteboard
+
+    Whiteboard.getElements()
+    assert elements from Whiteboard
+
+    Whiteboard.snapshot()
+    assert snapshotResult from Whiteboard
+}

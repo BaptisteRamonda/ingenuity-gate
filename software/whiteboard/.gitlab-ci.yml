@@ -1,0 +1,85 @@
+stages:
+  - build
+
+workflow:
+  rules:
+  - if: $CI_PIPELINE_SOURCE == "web"
+    when: always
+  - when: never
+
+variables:
+  CMAKE_VERSION: "3.21.2"
+  VS_CMAKE_GENERATOR: "Visual Studio 16 2019"
+  APPLE_SIGNING_ID: "Developer ID Application: Ingenuity i/o (56DRT9MG9S)"
+
+#    ____        _ _     _
+#   |  _ \      (_) |   | |
+#   | |_) |_   _ _| | __| |
+#   |  _ <| | | | | |/ _` |
+#   | |_) | |_| | | | (_| |
+#   |____/ \__,_|_|_|\__,_|
+#
+build_macos:
+  stage: build
+  tags:
+    - macos-qt6
+  when: manual
+  allow_failure: false
+  before_script:
+    # Submodule strategy
+    - git -c url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ingescape.com/".insteadOf="ssh://git@gitlab.ingescape.com:22222/" submodule update --init --recursive
+  script:
+    - cmake . -B build_dir -DCMAKE_PREFIX_PATH="$HOME/builds/sysroot/usr/local/" -DCMAKE_BUILD_TYPE=Release -DCI_PIPELINE_ID=${CI_PIPELINE_ID}
+    - cmake --build build_dir -- -j2
+  artifacts:
+    paths:
+      - build_dir/apps/Whiteboard/Whiteboard.app
+      - build_dir/apps/Snapshot/Snapshot.app
+  dependencies: []
+  needs: []
+
+
+build_win64:
+  stage: build
+  tags:
+    - windows
+  when: manual
+  allow_failure: false
+  before_script:
+    # Submodule strategy
+    - git -c url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ingescape.com/".insteadOf="ssh://git@gitlab.ingescape.com:22222/" submodule update --init --recursive
+  script:
+    - $env:PATH += ";$env:DEPLOYMENT_WINDOWS_NET_SHARE\Builds\Release\x64;$env:DEPLOYMENT_WINDOWS_NET_SHARE\Builds"
+    - cmake . -B build_dir -G"$env:VS_CMAKE_GENERATOR" -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$env:QT6_BASE_DIR" -DCI_PIPELINE_ID="$env:CI_PIPELINE_ID"
+    - cmake --build build_dir --target ALL_BUILD --config Release
+  artifacts:
+    paths:
+      - build_dir/apps/Whiteboard/Release
+      - build_dir/apps/Snapshot/Release
+  dependencies: []
+  needs: []
+
+
+build_linux:
+  stage: build
+  tags:
+    - ubuntu-18.04
+  when: manual
+  allow_failure: false
+  before_script:
+    # Submodule strategy
+    - git -c url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ingescape.com/".insteadOf="ssh://git@gitlab.ingescape.com:22222/" submodule update --init --recursive
+  script:
+    - cmake . -B build_dir -DCMAKE_BUILD_TYPE=Release -DCI_PIPELINE_ID=${CI_PIPELINE_ID}
+    - cmake --build build_dir -- -j2
+    - ./bundle-qt6.sh whiteboard 1.0.0 Whiteboard build_dir/apps/Whiteboard/Whiteboard /usr/local/Qt-6.2.4/bin/qmake
+    - ./bundle-qt6.sh snapshot 1.0.0 Snapshot build_dir/apps/Snapshot/Snapshot /usr/local/Qt-6.2.4/bin/qmake
+  artifacts:
+    paths:
+      - whiteboard-1.0.0_0-amd64
+      - whiteboard-1.0.0_0-amd64.deb
+      - snapshot-1.0.0_0-amd64
+      - snapshot-1.0.0_0-amd64.deb
+  dependencies: []
+  needs: []
+  

@@ -1,0 +1,3 @@
+[submodule "internal/I2Quick"]
+	path = internal/I2Quick
+	url = ssh://git@gitlab.ingescape.com:22222/ingescape/tools/i2quickqt6.git
