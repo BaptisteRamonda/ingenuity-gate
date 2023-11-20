@@ -42,6 +42,8 @@ python3 -m pip install pygame
 
 ### Usage
 
+First of all, launch Ingescape, the whiteboard and agents to ensure the system is running smoothly.
+
 Using the doorbell :
 
 - Press the doorbell button at the gate entrance and wait for the system's voice response
