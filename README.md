@@ -42,7 +42,7 @@ python3 -m pip install pygame
 
 ### Usage
 
-First, start Ingescape, the whiteboard and the agents, to ensure that the system is running smoothly by running the following commands:
+To begin, make sure you start Ingescape by launching the Circle software, then opening the platform on it.
 
 Using the doorbell :
 
