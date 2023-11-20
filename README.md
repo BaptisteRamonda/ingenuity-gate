@@ -42,7 +42,7 @@ python3 -m pip install pygame
 
 ### Usage
 
-To begin, make sure you start Ingescape by launching the Circle software, then opening the platform on it.
+To begin, make sure you start Ingescape by launching the Circle software, then opening the ![platform](software/whiteboard) on it.
 
 Using the doorbell :
 
