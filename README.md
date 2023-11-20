@@ -47,20 +47,20 @@ To begin, make sure you start Ingescape by launching the Circle software, then o
 Next, launch the various agents required for the system to function correctly by running the following command and by adapting it to the specific features of your device : 
 
 ```bash
-python3 main.py Appel device port
+python3 software/Appel/main.py Appel device port
 ```
 ```bash
-python3 main.py EtatVersTexte device port
+python3 software/EtatVersTexte/main.py EtatVersTexte device port
 ```
 ```bash
-python3 main.py Interface device port
+python3 software/Interface/main.py Interface device port
 ```
 ```bash
-python3 main.py Maquette device port
+python3 software/Maquette/main.py Maquette device port
 ```
 
 ```bash
-python3 main.py ReconnaissanceParole device port
+python3 software/ReconnaissanceVocale/main.py ReconnaissanceParole device port
 ```
 
 Using the doorbell :
