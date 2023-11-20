@@ -44,6 +44,14 @@ python3 -m pip install pygame
 
 To begin, make sure you start Ingescape by launching the Circle software, then opening the ![platform](software/whiteboard) on it (using the WhiteboardDemo.igsplatform file).
 
+Next, launch the various agents required for the system to function correctly by running the following command and by adapting it to the specific features of your device and the agent you wish to launch : 
+
+```bash
+python3 main.py agent_name device port
+```
+
+
+
 Using the doorbell :
 
 - Press the doorbell button at the gate entrance and wait for the system's voice response
